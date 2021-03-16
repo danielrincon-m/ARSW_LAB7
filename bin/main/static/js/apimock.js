@@ -55,15 +55,22 @@ var apimock = (function () {
     ]
 
     return {
-        getBlueprintsByAuthor: function(author, callback) {
+        getBlueprintsByAuthor: function (author, callback) {
             callback(null, mockdata[author]);
         },
 
-        getBlueprintsByNameAndAuthor: function(name, author, callback) {
-            blueprint = mockdata[author].find(function(blueprint) {
+        getBlueprintsByNameAndAuthor: function (name, author, callback) {
+            blueprint = mockdata[author].find(function (blueprint) {
                 return blueprint.name == name
             });
             callback(null, blueprint)
+        },
+
+        addPoint: function (author, name, point) {
+            blueprint = mockdata[author].find(function (blueprint) {
+                return blueprint.name == name
+            });
+            blueprint.points.push(point);
         }
     }
 

@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 </head>
 
-<body style="background-image: url(https://thumbs.dreamstime.com/b/grey-linen-canvas-la-imagen-de-fondo-textura-128776879.jpg)">
+<body
+    style="background-image: url(https://thumbs.dreamstime.com/b/grey-linen-canvas-la-imagen-de-fondo-textura-128776879.jpg)"
+    onLoad="app.init()">
     <div class="container my-3 py-5 px-5" style="background-color:white; border-style: solid; border-radius:60px">
         <h2 class="pb-2">Blueprints</h2>
         <div class="pl-3">
@@ -59,7 +61,7 @@
                 </div>
                 <div class="col-6">
                     <h3 id="current-bp-text">Current blueprint:</h3>
-                    <canvas id="canvas" width="480px" height="300px" style="border: 1px solid black;"></canvas>
+                    <canvas id="myCanvas" width="480px" height="300px" style="border: 1px solid black;"></canvas>
                 </div>
 
             </div>
