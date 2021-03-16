@@ -6,8 +6,8 @@ var app = (function () {
     let blueprints;
     let totalPoints;
 
-    let api = apimock;
-    // let api = apiclient;
+    // let api = apimock;
+    let api = apiclient;
 
     let init = function () {
         let canvas = $("#myCanvas")[0];
@@ -106,9 +106,16 @@ var app = (function () {
         ctx.stroke();
     }
 
+    let updateBlueprint = function () {
+        api.updateBlueprint(authorName, selectedBlueprint, points);
+        console.log("Terminó la función");
+        getBlueprints(authorName);
+    }
+
     return {
         init: init,
         drawBlueprint: drawBlueprint,
         getBlueprints: getBlueprints,
+        updateBlueprint: updateBlueprint,
     };
 })();

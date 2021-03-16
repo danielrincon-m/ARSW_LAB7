@@ -66,11 +66,11 @@ var apimock = (function () {
             callback(null, blueprint)
         },
 
-        addPoint: function (author, name, point) {
+        updateBlueprint: function (author, name, points) {
             blueprint = mockdata[author].find(function (blueprint) {
                 return blueprint.name == name
             });
-            blueprint.points.push(point);
+            blueprint.points = points;
         }
     }
 

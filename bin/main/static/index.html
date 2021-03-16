@@ -23,7 +23,7 @@
         <h2 class="pb-2">Blueprints</h2>
         <div class="pl-3">
             <div class="row">
-                <div class="col-1">
+                <div class="col-2">
                     <h3> Author</h3>
                 </div>
                 <div class="col-4">
@@ -60,8 +60,19 @@
                     <h5 id="total-points">Total user points:</h5>
                 </div>
                 <div class="col-6">
-                    <h3 id="current-bp-text">Current blueprint:</h3>
-                    <canvas id="myCanvas" width="480px" height="300px" style="border: 1px solid black;"></canvas>
+                    <div style="width: 95%;">
+                        <h3 id="current-bp-text">Current blueprint:</h3>
+                        <canvas id="myCanvas" width="470px" height="300px" style="border: 1px solid black;"></canvas>
+                        <div class="row">
+                            <div class="col-4">
+                                <button class="btn btn-info btn-block" onclick="app.updateBlueprint();">Save/Update</button>
+                            </div>
+                            <div class="col-4"></div>
+                            <div class="col-4">
+                                <button class="btn btn-danger btn-block" onclick="">Delete</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
