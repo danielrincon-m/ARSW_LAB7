@@ -1,4 +1,13 @@
 var apiclient = (function () {
+
+    let defineBlueprint = function (author, name, points) {
+        return {
+            author: author,
+            name: name,
+            points: points
+        };
+    }
+
     return {
         getBlueprintsByAuthor: function (author, callback) {
             $.get("/blueprints/" + author, function (data) {
@@ -16,24 +25,45 @@ var apiclient = (function () {
             });
         },
 
+        createBlueprint: function (author, name, points) {
+            let blueprint = defineBlueprint(author, name, points);
+
+            let postPromise = $.ajax({
+                url: "/blueprints",
+                type: 'POST',
+                data: JSON.stringify(blueprint),
+                contentType: "application/json"
+            }).fail(function (jqXHR, textStatus) {
+                console.log("Error en el POST: " + jqXHR + " " + textStatus);
+            });
+
+            return postPromise;
+        },
+
         updateBlueprint: function (author, name, points) {
-            let blueprint = {
-                author: author,
-                name: name,
-                points: points
-            };
-            console.log("/blueprints/" + author + "/" + name);
-            $.ajax({
+            let blueprint = defineBlueprint(author, name, points);
+
+            let putPromise = $.ajax({
                 url: "/blueprints/" + author + "/" + name,
                 type: 'PUT',
                 data: JSON.stringify(blueprint),
-                contentType: "application/json",
-                async: false
-            }).done(function (msg) {
-                console.log("INSERTÓ " + msg);
+                contentType: "application/json"
             }).fail(function (jqXHR, textStatus) {
-                console.log("Error: " + jqXHR + " " + textStatus);
+                console.log("Error en el PUT: " + jqXHR + " " + textStatus);
             });
+
+            return putPromise;
+        },
+
+        deleteBlueprint: function (author, name) {
+            let deletePromise = $.ajax({
+                url: "/blueprints/" + author + "/" + name,
+                type: 'DELETE'
+            }).fail(function (jqXHR, textStatus) {
+                console.log("Error en el DELETE: " + jqXHR + " " + textStatus);
+            });
+
+            return deletePromise;
         }
     }
 })();

@@ -30,7 +30,7 @@
                     <input id="author-name">
                 </div>
                 <div class="col-3">
-                    <button class="btn btn-secondary" onclick="app.getBlueprints($('#author-name').val());">Get
+                    <button class="btn btn-secondary" onclick="app.getBlueprints($('#author-name').val(), true);">Get
                         blueprints</button>
                 </div>
             </div>
@@ -65,11 +65,16 @@
                         <canvas id="myCanvas" width="470px" height="300px" style="border: 1px solid black;"></canvas>
                         <div class="row">
                             <div class="col-4">
-                                <button class="btn btn-info btn-block" onclick="app.updateBlueprint();">Save/Update</button>
+                                <button class="btn btn-info btn-block"
+                                    onclick="app.updateBlueprint();">Save/Update</button>
                             </div>
-                            <div class="col-4"></div>
                             <div class="col-4">
-                                <button class="btn btn-danger btn-block" onclick="">Delete</button>
+                                <button class="btn btn-danger btn-block"
+                                    onclick="app.deleteBlueprint();">Delete</button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-success btn-block" onclick="app.createNewBlueprint();">New
+                                    Blueprint</button>
                             </div>
                         </div>
                     </div>

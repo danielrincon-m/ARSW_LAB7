@@ -21,7 +21,7 @@ var app = (function () {
 
         // Event handler called for each pointerdown event:
         function draw(event) {
-            if (selectedBlueprint != null) {
+            if (selectedBlueprint != undefined) {
                 let canvas = $("#myCanvas")[0];
                 let coords = getMousePos(canvas, event);
                 // api.addPoint(authorName, selectedBlueprint, coords);
@@ -40,7 +40,7 @@ var app = (function () {
         }
     }
 
-    let getBlueprints = function (author) {
+    let getBlueprints = function (author, clearCnvs) {
         api.getBlueprintsByAuthor(author, function (err, res) {
             if (res != undefined) {
                 authorName = author;
@@ -49,6 +49,9 @@ var app = (function () {
 
                 getBlueprintsInfo(res);
                 createTable();
+                if (clearCnvs) {
+                    clearCanvas();
+                }
             } else {
                 alert("No existe el autor!");
             }
@@ -81,6 +84,14 @@ var app = (function () {
         // $("#current-bp-text").html("Current blueprint: " + )
     };
 
+    let clearCanvas = function () {
+        $("#current-bp-text").html("Current blueprint:");
+        let canvas = $("#myCanvas")[0];
+        let ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        selectedBlueprint = null;
+    }
+
     let drawBlueprint = function (bpname) {
         selectedBlueprint = bpname;
         api.getBlueprintsByNameAndAuthor(bpname, authorName, function (err, res) {
@@ -106,10 +117,45 @@ var app = (function () {
         ctx.stroke();
     }
 
+    let createNewBlueprint = function () {
+        if (authorName != undefined) {
+            let bpName = prompt("Por favor, escriba el nombre del plano:", "Cookie");
+            if (bpName != undefined && bpName != "") {
+                clearCanvas();
+                points = [];
+                selectedBlueprint = bpName;
+                $("#current-bp-text").html("Current blueprint: " + selectedBlueprint);
+            }
+        }
+    }
+
+    let blueprintExists = function (name) {
+        let blueprint = blueprints.find(function (blueprint) {
+            return blueprint.name == name
+        });
+        return blueprint != undefined;
+    }
+
     let updateBlueprint = function () {
-        api.updateBlueprint(authorName, selectedBlueprint, points);
-        console.log("Terminó la función");
-        getBlueprints(authorName);
+        if (selectedBlueprint != undefined) {
+            if (blueprintExists(selectedBlueprint)) {
+                api.updateBlueprint(authorName, selectedBlueprint, points).then(function () {
+                    getBlueprints(authorName, false);
+                });
+            } else {
+                api.createBlueprint(authorName, selectedBlueprint, points).then(function () {
+                    getBlueprints(authorName, false);
+                });
+            }
+        }
+    }
+
+    let deleteBlueprint = function () {
+        if (authorName != undefined && selectedBlueprint != undefined) {
+            api.deleteBlueprint(authorName, selectedBlueprint).then(function () {
+                getBlueprints(authorName, true);
+            });
+        }
     }
 
     return {
@@ -117,5 +163,7 @@ var app = (function () {
         drawBlueprint: drawBlueprint,
         getBlueprints: getBlueprints,
         updateBlueprint: updateBlueprint,
+        createNewBlueprint: createNewBlueprint,
+        deleteBlueprint: deleteBlueprint,
     };
 })();
