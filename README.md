@@ -69,13 +69,12 @@ Este laboratorio tiene como fin, actualizar en Front para que se pueda comunicar
 	2. Hacer GET a este mismo recurso, para actualizar el listado de planos y el puntaje del usuario.
 
 	![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.png)
-	![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.1png)
-	![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.2png)
-	![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.3png)
-	![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.4png)
-	![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.5png)
-	![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.6png)
-	![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.7png)
+	![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.2.png)
+	![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.4.png)
+	![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.5.png)
+	![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.6.png)
+	![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.7.png)
+	
 
 5. Agregue el botón 'DELETE', de manera que (también con promesas):
 	* Borre el canvas.
