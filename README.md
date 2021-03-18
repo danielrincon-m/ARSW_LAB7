@@ -15,9 +15,16 @@ Este laboratorio tiene como fin, actualizar en Front para que se pueda comunicar
 
 1. Agregue al canvas de la página un manejador de eventos que permita capturar los 'clicks' realizados, bien sea a través del mouse, o a través de una pantalla táctil. Para esto, tenga en cuenta [este ejemplo de uso de los eventos de tipo 'PointerEvent'](https://mobiforge.com/design-development/html5-pointer-events-api-combining-touch-mouse-and-pen) (aún no soportado por todos los navegadores) para este fin. Recuerde que a diferencia del ejemplo anterior (donde el código JS está incrustado en la vista), se espera tener la inicialización de los manejadores de eventos correctamente modularizado, tal [como se muestra en este codepen](https://codepen.io/hcadavid/pen/BwWbrw).
 
+
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/1.PNG)
+
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/1.2.png)
+
 2. Agregue lo que haga falta en sus módulos para que cuando se capturen nuevos puntos en el canvas abierto (si no se ha seleccionado un canvas NO se debe hacer nada):
 	1. Se agregue el punto al final de la secuencia de puntos del canvas actual (sólo en la memoria de la aplicación, AÚN NO EN EL API!).
 	2. Se repinte el dibujo.
+
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/2.1.png)
 
 3. Agregue el botón Save/Update. Respetando la arquitectura de módulos actual del cliente, haga que al oprimirse el botón:
 	1. Se haga PUT al API, con el plano actualizado, en su recurso REST correspondiente.
@@ -44,6 +51,14 @@ Este laboratorio tiene como fin, actualizar en Front para que se pueda comunicar
 	```
 	* Como en este caso se tienen tres operaciones basadas en _callbacks_, y que las mismas requieren realizarse en un orden específico, tenga en cuenta cómo usar las promesas de JavaScript [mediante alguno de los ejemplos disponibles](http://codepen.io/hcadavid/pen/jrwdgK).
 
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/3.1.png)
+
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/3.2.png)
+
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/3.3.png)
+
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/3.4.png)
+
 4. Agregue el botón 'Create new blueprint', de manera que cuando se oprima: 
 	* Se borre el canvas actual.
 	* Se solicite el nombre del nuevo 'blueprint' (usted decide la manera de hacerlo).
@@ -53,8 +68,19 @@ Este laboratorio tiene como fin, actualizar en Front para que se pueda comunicar
 	1. Hacer POST al recurso /blueprints, para crear el nuevo plano.
 	2. Hacer GET a este mismo recurso, para actualizar el listado de planos y el puntaje del usuario.
 
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.png)
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.1png)
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.2png)
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.3png)
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.4png)
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.5png)
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.6png)
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/4.7png)
+
 5. Agregue el botón 'DELETE', de manera que (también con promesas):
 	* Borre el canvas.
 	* Haga DELETE del recurso correspondiente.
 	* Haga GET de los planos ahora disponibles.
+
+![](https://github.com/danielrincon-m/ARSW_LAB7/blob/master/img/5.1.png)
 
